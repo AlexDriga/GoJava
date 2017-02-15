@@ -1,7 +1,7 @@
-package module2.hw1;
+package Module2;
 import java.util.Arrays;
 
-public class ArrayOperation{
+public class ArrayOperation {
     public static void main(String[] args)    {
         int[] intArray = {-13, 9, 11, -6, -1, 5, 17, 21, 19, 14};
         double[] doubleArray = {11.7, -9.3, 5.8, -8.1, 3.1, 19.3, -13.7, 27.5, 19.8, 10.5};
