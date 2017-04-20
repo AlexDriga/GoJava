@@ -4,9 +4,7 @@ import module4.Currency;
 import module7.Order;
 import module7.User;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -40,19 +38,43 @@ public class Main {
                 order6, order7, order8, order9, order10, order11, order12));
 
         System.out.println("\nDefault orderList" + "\n" + orderList);
-        ListUtils.sortByPriceDown(orderList);
-        System.out.println("\nSorted by price down" + "\n" + orderList);
+        ListUtils.sortByPriceDownVer1(orderList);
+        System.out.println("\nSorted by price down Ver1" + "\n" + orderList);
 
-        ListUtils.sortByPriceUpAndCity(orderList);
-        System.out.println("\nSorted by price up and city" + "\n" + orderList);
+        ListUtils.sortByPriceDownVer2(orderList);
+        System.out.println("\nSorted by price down Ver2" + "\n" + orderList);
 
-        ListUtils.sortByItemIdCity(orderList);
+        ListUtils.sortByPriceUpAndCityVer1(orderList);
+        System.out.println("\nSorted by price up and city Ver1" + "\n" + orderList);
+
+        ListUtils.sortByPriceUpAndCityVer2(orderList);
+        System.out.println("\nSorted by price up and city Ver2" + "\n" + orderList);
+
+        ListUtils.sortByItemIdCityVer1(orderList);
         System.out.println("\nSorted by item/id/city" + "\n" + orderList);
 
-        ListUtils.deletedDuplicatedOrder(orderList);
-        System.out.println("\nDeleted dupliczted Order" + "\n" + orderList);
+        System.out.println("\nDeleted duplicated Order" + "\n" + ListUtils.deletedDuplicatedOrder(orderList));
 
+        System.out.println("\nDeleted price below" + "\n" + ListUtils.deletedBelowPrice(orderList, 2000));
+        System.out.println("\nOrder list by USD" + "\n" + ListUtils.listCurrency(orderList, Currency.USD));
+        System.out.println("\nOrder list by EUR" + "\n" + ListUtils.listCurrency(orderList, Currency.EUR));
 
+        System.out.println("\nLists of currency USD/EUR" + "\n" + ListUtils.listsOfCurrency(orderList));
+
+        System.out.println("\nLists of city" + "\n" + ListUtils.listOFUniqeCity(orderList, "Kiev"));
+
+        TreeSet <Order> orderTreeSet = new TreeSet<>(new Comparator<Order>() {
+            @Override
+            public int compare(Order o1, Order o2) {
+                return o1.getPrice()- o2.getPrice();
+            }
+        });
+        orderTreeSet.addAll(Arrays.asList(order1, order2, order3, order4, order5,
+                order6, order7, order8, order9, order10, order11, order12));
+
+        System.out.println("\nDefault orderTreeSet" + "\n" + orderTreeSet);
+        System.out.println("\nLists contain last name - " + TreeSetUtils.ifContainsLastName(orderTreeSet,"Petrov"));
+        System.out.println("\nLists without currency USD" + TreeSetUtils.removeCurrency(orderTreeSet, Currency.USD));
 
     }
 }
